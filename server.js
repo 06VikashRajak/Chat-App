@@ -32,7 +32,7 @@ const Message = mongoose.model('Message', messageSchema);
 
 app.use(express.static('public'));
 app.use(express.json());
-app.get((req,res)=>{
+app.get("/",(req,res)=>{
     res.send('index.html');
 });
 

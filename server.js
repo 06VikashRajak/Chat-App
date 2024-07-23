@@ -32,6 +32,9 @@ const Message = mongoose.model('Message', messageSchema);
 
 app.use(express.static('public'));
 app.use(express.json());
+app.get((req,res)=>{
+    res.send('index.html');
+});
 
 io.on('connection', (socket) => {
     console.log('A user connected:', socket.id);

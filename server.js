@@ -2,10 +2,12 @@ const express = require('express');
 const http = require('http');
 const socketIo = require('socket.io');
 const mongoose = require('mongoose');
+const path = require('path');
 
 const app = express();
 const server = http.createServer(app);
 const io = socketIo(server);
+const path=require('path');
 
 const users = {};
 
@@ -30,10 +32,11 @@ const messageSchema = new mongoose.Schema({
 });
 const Message = mongoose.model('Message', messageSchema);
 
-app.use(express.static('public'));
+app.use(express.static(path.join(__dirname,'Public')));
 app.use(express.json());
-app.get("/",(req,res)=>{
-    res.sendFile('index.html');
+
+app.get("*",(req,res)=>{
+    res.sendFile(path.join(__dirname,'Public/index.html'));
 });
 
 io.on('connection', (socket) => {

@@ -11,7 +11,7 @@ const io = socketIo(server);
 const users = {};
 
 // Connect to MongoDB
-mongoose.connect('mongodb+srv://bekivikash0:vikash@cluster0.xq3130c.mongodb.net/chatApp',{ useNewUrlParser: true, useUnifiedTopology: true })
+mongoose.connect('mongodb+srv://bekivikash0:vikash@cluster0.xq3130c.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0',{ useNewUrlParser: true, useUnifiedTopology: true })
     .then(() => console.log('MongoDB connected...'))
     .catch(err => console.log('MongoDB connection error:', err));
 
@@ -125,5 +125,5 @@ app.post('/messages', async (req, res) => {
 });
 
 server.listen(3000, () => {
-    console.log('Listening on *:3000');
+    console.log('Listening on *:8080');
 });
